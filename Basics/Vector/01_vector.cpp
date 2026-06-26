@@ -1,3 +1,5 @@
+// NOTE: The logic and code implementation were written by me. 
+// I used AI to generate the detailed explanatory comments to help structure my learning log.
 #include<iostream>
 #include<vector>
 #include<algorithm> // Added for today's topics: sort(), reverse(), and find()
