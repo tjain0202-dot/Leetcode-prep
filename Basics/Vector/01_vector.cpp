@@ -3,6 +3,8 @@
 #include<iostream>
 #include<vector>
 #include<algorithm> // Added for today's topics: sort(), reverse(), and find()
+#include<iterator>  // Added for iterator distance math
+#include<numeric>   // Added for acumulate , adjacent_find
 using namespace std;
 
 int main(){
@@ -98,7 +100,25 @@ int main(){
         cout << "Index position of 8: " << index << "\n"; // OUTPUT: 3
     }
 
-    // 9. CLEAR METHOD 
+    // 9. Adjacent find works for sorted array as it finds addjacent num that are duplicate so let v is a sorted array {1,1,2,3}
+    auto it = adjacent_find(v.begin(),v.begin()+v.size()); // Finds where number 1 is hiding now it is pointing to first 1
+    // If it reached the end without finding anything, there are no duplicates
+    if (it != v.end()) {// means there is a duplicate as iterator it is not pointing to end of vector
+        return true; // Found a duplicate!
+    }
+    return false;
+
+    // 10. finding pivot index
+    int left_sum=0;
+    int total_sum= accumulate(v.begin(),v.end(),0); // total sum of vector
+    for(int i=0;i<v.size();i++){
+        int right_sum=total_sum-left_sum-v[i]; // right sum is total sum - left sum - current element
+        if(left_sum==right_sum){
+            return i; // pivot index found
+        }
+        left_sum+=v[i]; // update left sum for next iteration
+    }
+    // . CLEAR METHOD 
     // WARNING: Run this only when you are 100% finished using the data.
     nom.clear(); // erases everything inside 'nom', size drops to 0
     cout<<nom.size()<<endl; // OUTPUT: 0
