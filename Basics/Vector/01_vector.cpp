@@ -5,7 +5,29 @@
 #include<algorithm> // Added for today's topics: sort(), reverse(), and find()
 #include<iterator>  // Added for iterator distance math
 #include<numeric>   // Added for acumulate , adjacent_find
+#include <unordered_map> // Required for unordered_map
 using namespace std;
+
+vector<int> twoSum(vector<int>& nums, int target) {
+    // Key: The number itself, Value: Its index position
+    unordered_map<int, int> mp; 
+
+    for (int i = 0; i < (int)nums.size(); i++) {
+        int current_num = nums[i];
+        int required_num = target - current_num; // What we need to find
+
+        // Check if the required number is already in our map phonebook
+        if (mp.find(required_num) != mp.end()) {
+            // Found it! Return the saved index and the current index
+            return {mp[required_num], i};
+        }
+
+        // If not found, save the current number and its index into the map
+        mp[current_num] = i;
+    }
+
+    return {}; // Return empty vector if no solution exists
+}
 
 int main(){
     // ==========================================
@@ -118,6 +140,27 @@ int main(){
         }
         left_sum+=v[i]; // update left sum for next iteration
     }
+    //11. 
+//     vector<int> twoSum(vector<int>& nums, int target) {
+//     // Key: The number itself, Value: Its index position
+//     unordered_map<int, int> mp; 
+
+//     for (int i = 0; i < nums.size(); i++) {
+//         int current_num = nums[i];
+//         int required_num = target - current_num; // What we need to find
+
+//         // Check if the required number is already in our map phonebook
+//         if (mp.find(required_num) != mp.end()) {
+//             // Found it! Return the saved index and the current index
+//             return {mp[required_num], i};
+//         }
+
+//         // If not found, save the current number and its index into the map
+//         mp[current_num] = i;
+//     }
+
+//     return {}; // Return empty vector if no solution exists
+// } I have commented this code as two sum function must be outside the main function and I have already defined it above main function 
     // . CLEAR METHOD 
     // WARNING: Run this only when you are 100% finished using the data.
     nom.clear(); // erases everything inside 'nom', size drops to 0
