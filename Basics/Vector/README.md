@@ -1,8 +1,6 @@
 // NOTE: The logic and code implementation were written by me. 
 // I used AI to generate the detailed explanatory comments to help structure my learning log.
 
-## 📝 What I Learned Today
-
 * **Built-in Sorting:** `sort()` replaces manual looping and organizes tracking vectors instantly.
 * **Smart Searching:** `lower_bound()` uses fast internal binary search, but strictly requires data to be sorted first.
 * **Instant Math:** `accumulate()` sums up an entire range in a single line without manual loops.
